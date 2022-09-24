@@ -1,0 +1,762 @@
+{
+  "abi": [
+    {
+      "inputs": [],
+      "name": "SyncError",
+      "type": "error"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint32",
+          "name": "cycleEnd",
+          "type": "uint32"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "rewardAmount",
+          "type": "uint256"
+        }
+      ],
+      "name": "NewRewardsCycle",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "lastRewardAmount",
+      "outputs": [
+        {
+          "internalType": "uint192",
+          "name": "",
+          "type": "uint192"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "lastSync",
+      "outputs": [
+        {
+          "internalType": "uint32",
+          "name": "",
+          "type": "uint32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "rewardsCycleEnd",
+      "outputs": [
+        {
+          "internalType": "uint32",
+          "name": "",
+          "type": "uint32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "rewardsCycleLength",
+      "outputs": [
+        {
+          "internalType": "uint32",
+          "name": "",
+          "type": "uint32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "syncRewards",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "bytecode": {
+    "object": "0x",
+    "sourceMap": "",
+    "linkReferences": {}
+  },
+  "deployedBytecode": {
+    "object": "0x",
+    "sourceMap": "",
+    "linkReferences": {}
+  },
+  "methodIdentifiers": {
+    "lastRewardAmount()": "bafedcaa",
+    "lastSync()": "6917516b",
+    "rewardsCycleEnd()": "e7ff69f1",
+    "rewardsCycleLength()": "6fcf5e5f",
+    "syncRewards()": "72c0c211"
+  },
+  "rawMetadata": "{\"compiler\":{\"version\":\"0.8.13+commit.abaa5c0e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"SyncError\",\"type\":\"error\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint32\",\"name\":\"cycleEnd\",\"type\":\"uint32\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"rewardAmount\",\"type\":\"uint256\"}],\"name\":\"NewRewardsCycle\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"lastRewardAmount\",\"outputs\":[{\"internalType\":\"uint192\",\"name\":\"\",\"type\":\"uint192\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"lastSync\",\"outputs\":[{\"internalType\":\"uint32\",\"name\":\"\",\"type\":\"uint32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"rewardsCycleEnd\",\"outputs\":[{\"internalType\":\"uint32\",\"name\":\"\",\"type\":\"uint32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"rewardsCycleLength\",\"outputs\":[{\"internalType\":\"uint32\",\"name\":\"\",\"type\":\"uint32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"syncRewards\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"errors\":{\"SyncError()\":[{\"details\":\"thrown when syncing before cycle ends.\"}]},\"events\":{\"NewRewardsCycle(uint32,uint256)\":{\"details\":\"emit every time a new rewards cycle starts\"}},\"kind\":\"dev\",\"methods\":{},\"title\":\"An xERC4626 Single Staking Contract Interface\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"lastRewardAmount()\":{\"notice\":\"the amount of rewards distributed in a the most recent cycle\"},\"lastSync()\":{\"notice\":\"the effective start of the current cycle NOTE: This will likely be after `rewardsCycleEnd - rewardsCycleLength` as this is set as block.timestamp of the last `syncRewards` call.\"},\"rewardsCycleEnd()\":{\"notice\":\"the end of the current cycle. Will always be evenly divisible by `rewardsCycleLength`.\"},\"rewardsCycleLength()\":{\"notice\":\"the maximum length of a rewards cycle\"},\"syncRewards()\":{\"notice\":\"Distributes rewards to xERC4626 holders. All surplus `asset` balance of the contract over the internal balance becomes queued for the next cycle.\"}},\"notice\":\"This contract allows users to autocompound rewards denominated in an underlying reward token.  It is fully compatible with [ERC4626](https://eips.ethereum.org/EIPS/eip-4626) allowing for DeFi composability. It maintains balances using internal accounting to prevent instantaneous changes in the exchange rate. NOTE: an exception is at contract creation, when a reward cycle begins before the first deposit. After the first deposit, exchange rate updates smoothly. Operates on \\\"cycles\\\" which distribute the rewards surplus over the internal balance to users linearly over the remainder of the cycle window.\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"lib/ERC4626/src/interfaces/IxERC4626.sol\":\"IxERC4626\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[\":ERC4626/=lib/ERC4626/src/\",\":ds-test/=lib/solmate/lib/ds-test/src/\",\":forge-std/=lib/forge-std/src/\",\":openzeppelin-contracts/=lib/openzeppelin-contracts/\",\":solmate/=lib/solmate/src/\"]},\"sources\":{\"lib/ERC4626/src/interfaces/IxERC4626.sol\":{\"keccak256\":\"0xd1cc27808962370dda9de763126500e0d71531b62d6640c0017e0ca28133aa43\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://3caa9f280b7743bdd968d13bb2a89e82452d54a570d471cdcb7d0c3331f3c446\",\"dweb:/ipfs/QmbMCTdJZT488Tji9ivhxteZMz19GV71w6v1pJuvy61Jv7\"]},\"lib/solmate/src/mixins/ERC4626.sol\":{\"keccak256\":\"0xa404f6f45bd53f24a90cc5ffe95e16b52e3f2dfd88f0d7a1edcb35f815919a7b\",\"license\":\"AGPL-3.0-only\",\"urls\":[\"bzz-raw://9f01e32d713e05cc58c1563e9938a1c5e096b1da9f52c7ea8424f2317b94adc1\",\"dweb:/ipfs/QmVt5SsbA3kezM5pyovupN7iZLy6QVqY5qQRZKLFqxKJUs\"]},\"lib/solmate/src/tokens/ERC20.sol\":{\"keccak256\":\"0xcdfd8db76b2a3415620e4d18cc5545f3d50de792dbf2c3dd5adb40cbe6f94b10\",\"license\":\"AGPL-3.0-only\",\"urls\":[\"bzz-raw://57b3ab70cde374af1cf2c9888636e8de6cf660f087b1c9abd805e9271e19fa35\",\"dweb:/ipfs/QmNrLDBAHYFjpjSd12jerm1AdBkDqEYUUaXgnT854BUZ97\"]},\"lib/solmate/src/utils/FixedPointMathLib.sol\":{\"keccak256\":\"0xab8ca9afbb0f7412e1408d4f111b53cc00813bc752236638ad336050ea2188f8\",\"license\":\"AGPL-3.0-only\",\"urls\":[\"bzz-raw://cd892e4743a124063b7bc590c6f88f209a18a4831b18045afd843264fa75427f\",\"dweb:/ipfs/QmRunGD7E8enP5oZKiN8DxvAJew7J3jaz1iiHTFZj5Ghfc\"]},\"lib/solmate/src/utils/SafeCastLib.sol\":{\"keccak256\":\"0xb784a14411858036491124e677aecde6d500e695b7a70c74aa8f1001bda2ccab\",\"license\":\"AGPL-3.0-only\",\"urls\":[\"bzz-raw://7610da561fe84b893cb46410acdf9e56c204029a21cb717c11cde33ed4354427\",\"dweb:/ipfs/QmQ7LyNz9V48ox4BgncCpvqq4LcDFwqz9q3CTrsrLmdPrk\"]},\"lib/solmate/src/utils/SafeTransferLib.sol\":{\"keccak256\":\"0x333b56bef66ff71e3838910781df214acbeb6c2d6ace27a04ebb510f0e669300\",\"license\":\"AGPL-3.0-only\",\"urls\":[\"bzz-raw://3d14e68954e3a7072fa3d31e6a862d97f944114abda40dcd8c5ba017bf79ff41\",\"dweb:/ipfs/QmVfLok4Q5owoMyybxpensBvvjgUKT4kRVvM9BYuCifi5L\"]}},\"version\":1}",
+  "metadata": {
+    "compiler": {
+      "version": "0.8.13+commit.abaa5c0e"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "inputs": [],
+          "type": "error",
+          "name": "SyncError"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "uint32",
+              "name": "cycleEnd",
+              "type": "uint32",
+              "indexed": true
+            },
+            {
+              "internalType": "uint256",
+              "name": "rewardAmount",
+              "type": "uint256",
+              "indexed": false
+            }
+          ],
+          "type": "event",
+          "name": "NewRewardsCycle",
+          "anonymous": false
+        },
+        {
+          "inputs": [],
+          "stateMutability": "view",
+          "type": "function",
+          "name": "lastRewardAmount",
+          "outputs": [
+            {
+              "internalType": "uint192",
+              "name": "",
+              "type": "uint192"
+            }
+          ]
+        },
+        {
+          "inputs": [],
+          "stateMutability": "view",
+          "type": "function",
+          "name": "lastSync",
+          "outputs": [
+            {
+              "internalType": "uint32",
+              "name": "",
+              "type": "uint32"
+            }
+          ]
+        },
+        {
+          "inputs": [],
+          "stateMutability": "view",
+          "type": "function",
+          "name": "rewardsCycleEnd",
+          "outputs": [
+            {
+              "internalType": "uint32",
+              "name": "",
+              "type": "uint32"
+            }
+          ]
+        },
+        {
+          "inputs": [],
+          "stateMutability": "view",
+          "type": "function",
+          "name": "rewardsCycleLength",
+          "outputs": [
+            {
+              "internalType": "uint32",
+              "name": "",
+              "type": "uint32"
+            }
+          ]
+        },
+        {
+          "inputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function",
+          "name": "syncRewards"
+        }
+      ],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {
+          "lastRewardAmount()": {
+            "notice": "the amount of rewards distributed in a the most recent cycle"
+          },
+          "lastSync()": {
+            "notice": "the effective start of the current cycle NOTE: This will likely be after `rewardsCycleEnd - rewardsCycleLength` as this is set as block.timestamp of the last `syncRewards` call."
+          },
+          "rewardsCycleEnd()": {
+            "notice": "the end of the current cycle. Will always be evenly divisible by `rewardsCycleLength`."
+          },
+          "rewardsCycleLength()": {
+            "notice": "the maximum length of a rewards cycle"
+          },
+          "syncRewards()": {
+            "notice": "Distributes rewards to xERC4626 holders. All surplus `asset` balance of the contract over the internal balance becomes queued for the next cycle."
+          }
+        },
+        "version": 1
+      }
+    },
+    "settings": {
+      "remappings": [
+        ":ERC4626/=lib/ERC4626/src/",
+        ":ds-test/=lib/solmate/lib/ds-test/src/",
+        ":forge-std/=lib/forge-std/src/",
+        ":openzeppelin-contracts/=lib/openzeppelin-contracts/",
+        ":solmate/=lib/solmate/src/"
+      ],
+      "optimizer": {
+        "enabled": true,
+        "runs": 200
+      },
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "compilationTarget": {
+        "lib/ERC4626/src/interfaces/IxERC4626.sol": "IxERC4626"
+      },
+      "libraries": {}
+    },
+    "sources": {
+      "lib/ERC4626/src/interfaces/IxERC4626.sol": {
+        "keccak256": "0xd1cc27808962370dda9de763126500e0d71531b62d6640c0017e0ca28133aa43",
+        "urls": [
+          "bzz-raw://3caa9f280b7743bdd968d13bb2a89e82452d54a570d471cdcb7d0c3331f3c446",
+          "dweb:/ipfs/QmbMCTdJZT488Tji9ivhxteZMz19GV71w6v1pJuvy61Jv7"
+        ],
+        "license": "MIT"
+      },
+      "lib/solmate/src/mixins/ERC4626.sol": {
+        "keccak256": "0xa404f6f45bd53f24a90cc5ffe95e16b52e3f2dfd88f0d7a1edcb35f815919a7b",
+        "urls": [
+          "bzz-raw://9f01e32d713e05cc58c1563e9938a1c5e096b1da9f52c7ea8424f2317b94adc1",
+          "dweb:/ipfs/QmVt5SsbA3kezM5pyovupN7iZLy6QVqY5qQRZKLFqxKJUs"
+        ],
+        "license": "AGPL-3.0-only"
+      },
+      "lib/solmate/src/tokens/ERC20.sol": {
+        "keccak256": "0xcdfd8db76b2a3415620e4d18cc5545f3d50de792dbf2c3dd5adb40cbe6f94b10",
+        "urls": [
+          "bzz-raw://57b3ab70cde374af1cf2c9888636e8de6cf660f087b1c9abd805e9271e19fa35",
+          "dweb:/ipfs/QmNrLDBAHYFjpjSd12jerm1AdBkDqEYUUaXgnT854BUZ97"
+        ],
+        "license": "AGPL-3.0-only"
+      },
+      "lib/solmate/src/utils/FixedPointMathLib.sol": {
+        "keccak256": "0xab8ca9afbb0f7412e1408d4f111b53cc00813bc752236638ad336050ea2188f8",
+        "urls": [
+          "bzz-raw://cd892e4743a124063b7bc590c6f88f209a18a4831b18045afd843264fa75427f",
+          "dweb:/ipfs/QmRunGD7E8enP5oZKiN8DxvAJew7J3jaz1iiHTFZj5Ghfc"
+        ],
+        "license": "AGPL-3.0-only"
+      },
+      "lib/solmate/src/utils/SafeCastLib.sol": {
+        "keccak256": "0xb784a14411858036491124e677aecde6d500e695b7a70c74aa8f1001bda2ccab",
+        "urls": [
+          "bzz-raw://7610da561fe84b893cb46410acdf9e56c204029a21cb717c11cde33ed4354427",
+          "dweb:/ipfs/QmQ7LyNz9V48ox4BgncCpvqq4LcDFwqz9q3CTrsrLmdPrk"
+        ],
+        "license": "AGPL-3.0-only"
+      },
+      "lib/solmate/src/utils/SafeTransferLib.sol": {
+        "keccak256": "0x333b56bef66ff71e3838910781df214acbeb6c2d6ace27a04ebb510f0e669300",
+        "urls": [
+          "bzz-raw://3d14e68954e3a7072fa3d31e6a862d97f944114abda40dcd8c5ba017bf79ff41",
+          "dweb:/ipfs/QmVfLok4Q5owoMyybxpensBvvjgUKT4kRVvM9BYuCifi5L"
+        ],
+        "license": "AGPL-3.0-only"
+      }
+    },
+    "version": 1
+  },
+  "ast": {
+    "absolutePath": "lib/ERC4626/src/interfaces/IxERC4626.sol",
+    "id": 44,
+    "exportedSymbols": {
+      "ERC20": [
+        27016
+      ],
+      "ERC4626": [
+        26628
+      ],
+      "FixedPointMathLib": [
+        27168
+      ],
+      "IxERC4626": [
+        43
+      ],
+      "SafeCastLib": [
+        27425
+      ],
+      "SafeTransferLib": [
+        27510
+      ]
+    },
+    "nodeType": "SourceUnit",
+    "src": "133:2607:0",
+    "nodes": [
+      {
+        "id": 1,
+        "nodeType": "PragmaDirective",
+        "src": "133:23:0",
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ]
+      },
+      {
+        "id": 2,
+        "nodeType": "ImportDirective",
+        "src": "158:36:0",
+        "absolutePath": "lib/solmate/src/mixins/ERC4626.sol",
+        "file": "solmate/mixins/ERC4626.sol",
+        "nameLocation": "-1:-1:-1",
+        "scope": 44,
+        "sourceUnit": 26629,
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "id": 3,
+        "nodeType": "ImportDirective",
+        "src": "195:39:0",
+        "absolutePath": "lib/solmate/src/utils/SafeCastLib.sol",
+        "file": "solmate/utils/SafeCastLib.sol",
+        "nameLocation": "-1:-1:-1",
+        "scope": 44,
+        "sourceUnit": 27426,
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "id": 43,
+        "nodeType": "ContractDefinition",
+        "src": "951:1788:0",
+        "nodes": [
+          {
+            "id": 7,
+            "nodeType": "ErrorDefinition",
+            "src": "1194:18:0",
+            "documentation": {
+              "id": 5,
+              "nodeType": "StructuredDocumentation",
+              "src": "1142:47:0",
+              "text": "@dev thrown when syncing before cycle ends."
+            },
+            "errorSelector": "49f4cf9c",
+            "name": "SyncError",
+            "nameLocation": "1200:9:0",
+            "parameters": {
+              "id": 6,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1209:2:0"
+            }
+          },
+          {
+            "id": 14,
+            "nodeType": "EventDefinition",
+            "src": "1436:69:0",
+            "anonymous": false,
+            "documentation": {
+              "id": 8,
+              "nodeType": "StructuredDocumentation",
+              "src": "1380:51:0",
+              "text": "@dev emit every time a new rewards cycle starts"
+            },
+            "eventSelector": "2fa39aac60d1c94cda4ab0e86ae9c0ffab5b926e5b827a4ccba1d9b5b2ef596e",
+            "name": "NewRewardsCycle",
+            "nameLocation": "1442:15:0",
+            "parameters": {
+              "id": 13,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "cycleEnd",
+                  "nameLocation": "1473:8:0",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14,
+                  "src": "1458:23:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  },
+                  "typeName": {
+                    "id": 9,
+                    "name": "uint32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1458:6:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint32",
+                      "typeString": "uint32"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 12,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "rewardAmount",
+                  "nameLocation": "1491:12:0",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14,
+                  "src": "1483:20:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 11,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1483:7:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1457:47:0"
+            }
+          },
+          {
+            "id": 20,
+            "nodeType": "FunctionDefinition",
+            "src": "1729:61:0",
+            "documentation": {
+              "id": 15,
+              "nodeType": "StructuredDocumentation",
+              "src": "1675:49:0",
+              "text": "@notice the maximum length of a rewards cycle"
+            },
+            "functionSelector": "6fcf5e5f",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "rewardsCycleLength",
+            "nameLocation": "1738:18:0",
+            "parameters": {
+              "id": 16,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1756:2:0"
+            },
+            "returnParameters": {
+              "id": 19,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 18,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 20,
+                  "src": "1782:6:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  },
+                  "typeName": {
+                    "id": 17,
+                    "name": "uint32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1782:6:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint32",
+                      "typeString": "uint32"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1781:8:0"
+            },
+            "scope": 43,
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 26,
+            "nodeType": "FunctionDefinition",
+            "src": "1998:51:0",
+            "documentation": {
+              "id": 21,
+              "nodeType": "StructuredDocumentation",
+              "src": "1796:197:0",
+              "text": "@notice the effective start of the current cycle\n NOTE: This will likely be after `rewardsCycleEnd - rewardsCycleLength` as this is set as block.timestamp of the last `syncRewards` call."
+            },
+            "functionSelector": "6917516b",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "lastSync",
+            "nameLocation": "2007:8:0",
+            "parameters": {
+              "id": 22,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2015:2:0"
+            },
+            "returnParameters": {
+              "id": 25,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 24,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 26,
+                  "src": "2041:6:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  },
+                  "typeName": {
+                    "id": 23,
+                    "name": "uint32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2041:6:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint32",
+                      "typeString": "uint32"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2040:8:0"
+            },
+            "scope": 43,
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 32,
+            "nodeType": "FunctionDefinition",
+            "src": "2158:58:0",
+            "documentation": {
+              "id": 27,
+              "nodeType": "StructuredDocumentation",
+              "src": "2055:98:0",
+              "text": "@notice the end of the current cycle. Will always be evenly divisible by `rewardsCycleLength`."
+            },
+            "functionSelector": "e7ff69f1",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "rewardsCycleEnd",
+            "nameLocation": "2167:15:0",
+            "parameters": {
+              "id": 28,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2182:2:0"
+            },
+            "returnParameters": {
+              "id": 31,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 30,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 32,
+                  "src": "2208:6:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  },
+                  "typeName": {
+                    "id": 29,
+                    "name": "uint32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2208:6:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint32",
+                      "typeString": "uint32"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2207:8:0"
+            },
+            "scope": 43,
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 38,
+            "nodeType": "FunctionDefinition",
+            "src": "2299:60:0",
+            "documentation": {
+              "id": 33,
+              "nodeType": "StructuredDocumentation",
+              "src": "2222:72:0",
+              "text": "@notice the amount of rewards distributed in a the most recent cycle"
+            },
+            "functionSelector": "bafedcaa",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "lastRewardAmount",
+            "nameLocation": "2308:16:0",
+            "parameters": {
+              "id": 34,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2324:2:0"
+            },
+            "returnParameters": {
+              "id": 37,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 36,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 38,
+                  "src": "2350:7:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint192",
+                    "typeString": "uint192"
+                  },
+                  "typeName": {
+                    "id": 35,
+                    "name": "uint192",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2350:7:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint192",
+                      "typeString": "uint192"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2349:9:0"
+            },
+            "scope": 43,
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 42,
+            "nodeType": "FunctionDefinition",
+            "src": "2705:32:0",
+            "documentation": {
+              "id": 39,
+              "nodeType": "StructuredDocumentation",
+              "src": "2535:165:0",
+              "text": "@notice Distributes rewards to xERC4626 holders.\n All surplus `asset` balance of the contract over the internal balance becomes queued for the next cycle."
+            },
+            "functionSelector": "72c0c211",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "syncRewards",
+            "nameLocation": "2714:11:0",
+            "parameters": {
+              "id": 40,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2725:2:0"
+            },
+            "returnParameters": {
+              "id": 41,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2736:0:0"
+            },
+            "scope": 43,
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "IxERC4626",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": {
+          "id": 4,
+          "nodeType": "StructuredDocumentation",
+          "src": "236:714:0",
+          "text": "@title  An xERC4626 Single Staking Contract Interface\n@notice This contract allows users to autocompound rewards denominated in an underlying reward token. \nIt is fully compatible with [ERC4626](https://eips.ethereum.org/EIPS/eip-4626) allowing for DeFi composability.\nIt maintains balances using internal accounting to prevent instantaneous changes in the exchange rate.\nNOTE: an exception is at contract creation, when a reward cycle begins before the first deposit. After the first deposit, exchange rate updates smoothly.\nOperates on \"cycles\" which distribute the rewards surplus over the internal balance to users linearly over the remainder of the cycle window."
+        },
+        "fullyImplemented": false,
+        "linearizedBaseContracts": [
+          43
+        ],
+        "name": "IxERC4626",
+        "nameLocation": "961:9:0",
+        "scope": 44,
+        "usedErrors": [
+          7
+        ]
+      }
+    ],
+    "license": "MIT"
+  },
+  "id": 0
+}
