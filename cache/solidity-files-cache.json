@@ -1276,8 +1276,8 @@
       }
     },
     "src/DepositContract.sol": {
-      "lastModificationDate": 1663997681897,
-      "contentHash": "4c04e780db1980a079578ae1a2b05cb2",
+      "lastModificationDate": 1664025530532,
+      "contentHash": "38e4b57e9c8dd6271e1b2f4bf19b5d11",
       "sourceName": "src/DepositContract.sol",
       "solcConfig": {
         "settings": {
@@ -1692,6 +1692,81 @@
         }
       }
     },
+    "test/deposit.t.sol": {
+      "lastModificationDate": 1664025490229,
+      "contentHash": "661725b5f700f072b20f86e5c0d782e3",
+      "sourceName": "test/deposit.t.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "metadata": {
+            "bytecodeHash": "ipfs"
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ]
+            }
+          },
+          "evmVersion": "london",
+          "libraries": {}
+        }
+      },
+      "imports": [
+        "lib/ERC4626/src/interfaces/IxERC4626.sol",
+        "lib/ERC4626/src/xERC4626.sol",
+        "lib/forge-std/src/Script.sol",
+        "lib/forge-std/src/StdJson.sol",
+        "lib/forge-std/src/Test.sol",
+        "lib/forge-std/src/Vm.sol",
+        "lib/forge-std/src/console.sol",
+        "lib/forge-std/src/console2.sol",
+        "lib/openzeppelin-contracts/contracts/security/ReentrancyGuard.sol",
+        "lib/openzeppelin-contracts/contracts/token/ERC20/ERC20.sol",
+        "lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol",
+        "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Burnable.sol",
+        "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/IERC20Metadata.sol",
+        "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/draft-ERC20Permit.sol",
+        "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/draft-IERC20Permit.sol",
+        "lib/openzeppelin-contracts/contracts/utils/Context.sol",
+        "lib/openzeppelin-contracts/contracts/utils/Counters.sol",
+        "lib/openzeppelin-contracts/contracts/utils/Strings.sol",
+        "lib/openzeppelin-contracts/contracts/utils/cryptography/ECDSA.sol",
+        "lib/openzeppelin-contracts/contracts/utils/cryptography/EIP712.sol",
+        "lib/openzeppelin-contracts/contracts/utils/math/Math.sol",
+        "lib/solmate/lib/ds-test/src/test.sol",
+        "lib/solmate/src/mixins/ERC4626.sol",
+        "lib/solmate/src/tokens/ERC20.sol",
+        "lib/solmate/src/utils/FixedPointMathLib.sol",
+        "lib/solmate/src/utils/SafeCastLib.sol",
+        "lib/solmate/src/utils/SafeTransferLib.sol",
+        "src/DepositContract.sol",
+        "src/ERC20/ERC20PermitPermissionedMint.sol",
+        "src/IsfrxETH.sol",
+        "src/OperatorRegistry.sol",
+        "src/Utils/Owned.sol",
+        "src/frxETH.sol",
+        "src/frxETHMinter.sol",
+        "src/sfrxETH.sol"
+      ],
+      "versionRequirement": "^0.8.0",
+      "artifacts": {
+        "deposit": {
+          "0.8.13+commit.abaa5c0e.Darwin.appleclang": "deposit.t.sol/deposit.json"
+        }
+      }
+    },
     "test/frxETHMinter.t.sol": {
       "lastModificationDate": 1663997681898,
       "contentHash": "19f90e41885e01ef195f85e32673f1ee",
@@ -1843,10 +1918,10 @@
         }
       }
     },
-    "test/myTest.t.sol": {
-      "lastModificationDate": 1664007672493,
-      "contentHash": "d6f7728c5e781482c5c53c417b272278",
-      "sourceName": "test/myTest.t.sol",
+    "test/init.t.sol": {
+      "lastModificationDate": 1664024130386,
+      "contentHash": "29c9bc1f6e66c14ff84a571221665738",
+      "sourceName": "test/init.t.sol",
       "solcConfig": {
         "settings": {
           "optimizer": {
@@ -1914,8 +1989,8 @@
       ],
       "versionRequirement": "^0.8.0",
       "artifacts": {
-        "myTest": {
-          "0.8.13+commit.abaa5c0e.Darwin.appleclang": "myTest.t.sol/myTest.json"
+        "init": {
+          "0.8.13+commit.abaa5c0e.Darwin.appleclang": "init.t.sol/init.json"
         }
       }
     }
