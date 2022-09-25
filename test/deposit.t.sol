@@ -56,9 +56,7 @@ contract deposit is Test {
         validators[0] = (OperatorRegistry.Validator(pubKeys[0], sigs[0], ddRoots[0]));
         validators[1] = (OperatorRegistry.Validator(pubKeys[1], sigs[1], ddRoots[1]));
 
-        vm.stopPrank();
-
        // WITHDRAWAL_CREDENTIALS = vm.envBytes("VALIDATOR_TEST_WITHDRAWAL_CREDENTIALS0");
-       // depositContract.deposit{ value: 1 ether }(pubKeys[0], WITHDRAWAL_CREDENTIALS, sigs[0], ddRoots[0]);
+       depositContract.deposit{ value: 1 ether }(pubKeys[0], WITHDRAWAL_CREDENTIALS, sigs[0], ddRoots[0]);
     }
 }

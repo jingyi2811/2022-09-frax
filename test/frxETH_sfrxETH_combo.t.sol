@@ -820,7 +820,7 @@ contract xERC4626Test is Test {
         // By default, this contract has some, but owner does not
         address(owner).call{ value: transfer_amount }("");
         if (transfer_amount > 0) require(owner.balance > 0, "No ether. Fork mainnet or get some.");
-        
+
         vm.prank(owner);
         if (transfer_amount == 0) vm.expectRevert("Cannot submit 0");
         frxETHMinterContract.submitAndDeposit{ value: transfer_amount }(owner);
@@ -864,29 +864,29 @@ contract xERC4626Test is Test {
 
         // Sync the rewards
         sfrxETHtoken.syncRewards();
-        
+
         // After sync, everything should be the  same except lastRewardAmount
-        require(sfrxETHtoken.lastRewardAmount() == reward);  
+        require(sfrxETHtoken.lastRewardAmount() == reward);
         require(sfrxETHtoken.totalAssets() == seed);
         require(sfrxETHtoken.convertToAssets(seed) == seed); // 1:1 still
 
         // Accrue half the rewards
         vm.warp(500);
-        require(sfrxETHtoken.lastRewardAmount() == reward);  
+        require(sfrxETHtoken.lastRewardAmount() == reward);
         require(sfrxETHtoken.totalAssets() == uint256(seed) + (reward / 2));
         require(sfrxETHtoken.convertToAssets(seed) == uint256(seed) + (reward / 2)); // Half rewards added
         require(sfrxETHtoken.convertToShares(uint256(seed) + (reward / 2)) == seed); // Half rewards added
 
         // Accrue remaining rewards
         vm.warp(1000);
-        require(sfrxETHtoken.lastRewardAmount() == reward);  
+        require(sfrxETHtoken.lastRewardAmount() == reward);
         require(sfrxETHtoken.totalAssets() == combined);
         assertEq(sfrxETHtoken.convertToAssets(seed), combined); // All rewards added
         assertEq(sfrxETHtoken.convertToShares(combined), seed);
 
         // Accrue all and warp ahead 2 cycles
         vm.warp(2000);
-        require(sfrxETHtoken.lastRewardAmount() == reward);  
+        require(sfrxETHtoken.lastRewardAmount() == reward);
         require(sfrxETHtoken.totalAssets() == combined);
         assertEq(sfrxETHtoken.convertToAssets(seed), combined); // All rewards added
         assertEq(sfrxETHtoken.convertToShares(combined), seed);
@@ -926,21 +926,21 @@ contract xERC4626Test is Test {
 
         // Accrue half the rewards
         vm.warp(750);
-        require(sfrxETHtoken.lastRewardAmount() == reward);  
+        require(sfrxETHtoken.lastRewardAmount() == reward);
         require(sfrxETHtoken.totalAssets() == uint256(seed) + (reward / 2));
         require(sfrxETHtoken.convertToAssets(seed) == uint256(seed) + (reward / 2)); // Half rewards added
 
         // Accrue remaining rewards
         vm.warp(1000);
-        require(sfrxETHtoken.lastRewardAmount() == reward);  
+        require(sfrxETHtoken.lastRewardAmount() == reward);
         require(sfrxETHtoken.totalAssets() == combined);
         assertEq(sfrxETHtoken.convertToAssets(seed), combined); // All rewards added
         assertEq(sfrxETHtoken.convertToShares(combined), seed);
 
-        // Accrue all and warp ahead past a new cycle. 
+        // Accrue all and warp ahead past a new cycle.
         // Variables should not change since no new rewards were added in the interim
         vm.warp(2000);
-        require(sfrxETHtoken.lastRewardAmount() == reward);  
+        require(sfrxETHtoken.lastRewardAmount() == reward);
         require(sfrxETHtoken.totalAssets() == combined);
         assertEq(sfrxETHtoken.convertToAssets(seed), combined); // all rewards added
         assertEq(sfrxETHtoken.convertToShares(combined), seed);
@@ -967,7 +967,7 @@ contract xERC4626Test is Test {
 
     function testTotalAssetsAfterWithdraw(uint128 deposit, uint128 withdraw) public {
         vm.assume(deposit != 0 && withdraw != 0 && withdraw <= deposit);
-        
+
         // Mint frxETH to this testing contract from nothing, for testing
         mintTo(address(this), deposit);
 
@@ -1026,9 +1026,9 @@ contract xERC4626Test is Test {
 
         // Sync with no new rewards
         sfrxETHtoken.syncRewards();
-        require(sfrxETHtoken.lastRewardAmount() == 0);  
-        require(sfrxETHtoken.lastSync() == 100);  
-        require(sfrxETHtoken.rewardsCycleEnd() == 1000);  
+        require(sfrxETHtoken.lastRewardAmount() == 0);
+        require(sfrxETHtoken.lastSync() == 100);
+        require(sfrxETHtoken.rewardsCycleEnd() == 1000);
         require(sfrxETHtoken.totalAssets() == seed);
         require(sfrxETHtoken.convertToShares(seed) == seed);
 
@@ -1040,14 +1040,14 @@ contract xERC4626Test is Test {
 
         // Sync with rewards this time
         sfrxETHtoken.syncRewards();
-        require(sfrxETHtoken.lastRewardAmount() == reward);  
+        require(sfrxETHtoken.lastRewardAmount() == reward);
         require(sfrxETHtoken.totalAssets() == seed);
         require(sfrxETHtoken.convertToShares(seed) == seed);
 
         // Fast forward
         vm.warp(2000);
 
-        require(sfrxETHtoken.lastRewardAmount() == reward);  
+        require(sfrxETHtoken.lastRewardAmount() == reward);
         require(sfrxETHtoken.totalAssets() == combined);
         require(sfrxETHtoken.convertToAssets(seed) == combined);
         assertEq(sfrxETHtoken.convertToShares(combined), seed);
@@ -1075,9 +1075,9 @@ contract xERC4626Test is Test {
 
         // Sync with new rewards
         sfrxETHtoken.syncRewards();
-        require(sfrxETHtoken.lastRewardAmount() == reward);  
-        require(sfrxETHtoken.lastSync() == 100);  
-        require(sfrxETHtoken.rewardsCycleEnd() == 1000);  
+        require(sfrxETHtoken.lastRewardAmount() == reward);
+        require(sfrxETHtoken.lastSync() == 100);
+        require(sfrxETHtoken.rewardsCycleEnd() == 1000);
         require(sfrxETHtoken.totalAssets() == seed);
         require(sfrxETHtoken.convertToShares(seed) == seed); // 1:1 still
 
@@ -1087,14 +1087,14 @@ contract xERC4626Test is Test {
 
         // Sync the rewards
         sfrxETHtoken.syncRewards();
-        require(sfrxETHtoken.lastRewardAmount() == reward2);  
+        require(sfrxETHtoken.lastRewardAmount() == reward2);
         require(sfrxETHtoken.totalAssets() == combined1);
         require(sfrxETHtoken.convertToAssets(seed) == combined1);
 
         // Fast forward two cycles
         vm.warp(2000);
 
-        require(sfrxETHtoken.lastRewardAmount() == reward2);  
+        require(sfrxETHtoken.lastRewardAmount() == reward2);
         require(sfrxETHtoken.totalAssets() == combined2);
         require(sfrxETHtoken.convertToAssets(seed) == combined2);
     }
