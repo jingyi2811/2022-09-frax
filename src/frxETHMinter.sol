@@ -148,7 +148,7 @@ contract frxETHMinter is OperatorRegistry, ReentrancyGuard {
             );
 
             // Set the validator as used so it won't get an extra 32 ETH
-            activeValidators[pubKey] = true;
+                activeValidators[pubKey] = true;
 
             emit DepositSent(pubKey, withdrawalCredential);
         }

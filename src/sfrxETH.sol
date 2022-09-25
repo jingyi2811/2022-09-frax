@@ -65,8 +65,7 @@ contract sfrxETH is xERC4626, ReentrancyGuard {
         bytes32 r,
         bytes32 s
     ) external nonReentrant returns (uint256 shares) {
-        uint256 amount = approveMax ? type(uint256).max : assets;
-        asset.permit(msg.sender, address(this), amount, deadline, v, r, s);
+        asset.permit(msg.sender, address(this), assets, deadline, v, r, s);
         return (deposit(assets, receiver));
     }
 
@@ -81,8 +80,7 @@ contract sfrxETH is xERC4626, ReentrancyGuard {
         bytes32 r,
         bytes32 s
     ) external nonReentrant returns (uint256 assets) {
-        uint256 amount = approveMax ? type(uint256).max : previewMint(shares);
-        asset.permit(msg.sender, address(this), amount, deadline, v, r, s);
+        asset.permit(msg.sender, address(this), shares, deadline, v, r, s);
         return (mint(shares, receiver));
     }
 

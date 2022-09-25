@@ -1586,8 +1586,8 @@
       }
     },
     "src/frxETHMinter.sol": {
-      "lastModificationDate": 1664006773276,
-      "contentHash": "05f6ac8e67f647af5c05b6c5b91081c3",
+      "lastModificationDate": 1664089679535,
+      "contentHash": "0fc956bc1c9afa0380308a7c379a5015",
       "sourceName": "src/frxETHMinter.sol",
       "solcConfig": {
         "settings": {
@@ -1645,8 +1645,8 @@
       }
     },
     "src/sfrxETH.sol": {
-      "lastModificationDate": 1664083340298,
-      "contentHash": "d524e4cbfd024e6179ff2f69f19c5ce9",
+      "lastModificationDate": 1664094267267,
+      "contentHash": "7eb75accc52d212c94939c101b62511c",
       "sourceName": "src/sfrxETH.sol",
       "solcConfig": {
         "settings": {
@@ -1995,7 +1995,7 @@
       }
     },
     "test/signature.t.sol": {
-      "lastModificationDate": 1664083224403,
+      "lastModificationDate": 1664094312732,
       "contentHash": "b07fa07780ca4884fd0895e2ab5ab493",
       "sourceName": "test/signature.t.sol",
       "solcConfig": {
