@@ -949,6 +949,14 @@
     },
     "version": 1
   },
+  "userdoc": {
+    "version": 1,
+    "kind": "user"
+  },
+  "devdoc": {
+    "version": 1,
+    "kind": "dev"
+  },
   "ast": {
     "absolutePath": "lib/forge-std/src/Test.sol",
     "id": 4797,

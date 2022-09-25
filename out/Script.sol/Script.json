@@ -151,6 +151,14 @@
     },
     "version": 1
   },
+  "userdoc": {
+    "version": 1,
+    "kind": "user"
+  },
+  "devdoc": {
+    "version": 1,
+    "kind": "dev"
+  },
   "ast": {
     "absolutePath": "lib/forge-std/src/Script.sol",
     "id": 528,

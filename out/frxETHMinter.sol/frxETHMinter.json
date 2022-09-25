@@ -2134,6 +2134,96 @@
     },
     "version": 1
   },
+  "userdoc": {
+    "version": 1,
+    "kind": "user",
+    "methods": {
+      "clearValidatorArray()": {
+        "notice": "Empties the validator array"
+      },
+      "depositEther()": {
+        "notice": "Deposit batches of ETH to the ETH 2.0 deposit contract"
+      },
+      "getValidator(uint256)": {
+        "notice": "Return the information of the i'th validator in the registry"
+      },
+      "getValidatorStruct(bytes,bytes,bytes32)": {
+        "notice": "Returns a Validator struct of the given inputs to make formatting addValidator inputs easier"
+      },
+      "moveWithheldETH(address,uint256)": {
+        "notice": "Give the withheld ETH to the \"to\" address"
+      },
+      "numValidators()": {
+        "notice": "Returns the number of validators"
+      },
+      "popValidators(uint256)": {
+        "notice": "Remove validators from the end of the validators array, in case they were added in error"
+      },
+      "recoverERC20(address,uint256)": {
+        "notice": "For emergencies if someone accidentally sent some ERC20 tokens here"
+      },
+      "recoverEther(uint256)": {
+        "notice": "For emergencies if something gets stuck"
+      },
+      "removeValidator(uint256,bool)": {
+        "notice": "Remove a validator from the array. If dont_care_about_ordering is true,   a swap and pop will occur instead of a more gassy loop "
+      },
+      "setTimelock(address)": {
+        "notice": "Set the timelock contract"
+      },
+      "setWithdrawalCredential(bytes)": {
+        "notice": "Requires empty validator stack as changing withdrawal creds invalidates signature"
+      },
+      "setWithholdRatio(uint256)": {
+        "notice": "An input of 1e6 results in 100% of Eth deposited, 0% withheld"
+      },
+      "submit()": {
+        "notice": "Mint frxETH to the sender depending on the ETH value sent"
+      },
+      "submitAndGive(address)": {
+        "notice": "Mint frxETH to the recipient using sender's funds"
+      },
+      "swapValidator(uint256,uint256)": {
+        "notice": "Swap the location of one validator with another"
+      },
+      "togglePauseDepositEther()": {
+        "notice": "Toggle allowing depositing ETH to validators"
+      },
+      "togglePauseSubmits()": {
+        "notice": "Toggle allowing submites"
+      }
+    }
+  },
+  "devdoc": {
+    "version": 1,
+    "kind": "dev",
+    "details": "Has permission to mint frxETH.  Once +32 ETH has accumulated, adds it to a validator, which then deposits it for ETH 2.0 staking (depositEther()) Withhold ratio refers to what percentage of ETH this contract keeps whenever a user makes a deposit. 0% is kept initially ",
+    "methods": {
+      "addValidator((bytes,bytes,bytes32))": {
+        "details": "You should verify offchain that the validator is indeed valid before adding it Reason we don't do that here is for gas "
+      },
+      "addValidators((bytes,bytes,bytes32)[])": {
+        "details": "You should verify offchain that the validators are indeed valid before adding them Reason we don't do that here is for gas "
+      },
+      "clearValidatorArray()": {
+        "details": "Need to do this before setWithdrawalCredential()"
+      },
+      "depositEther()": {
+        "details": "Usually a bot will call this periodically"
+      },
+      "setWithdrawalCredential(bytes)": {
+        "details": "May need to call clearValidatorArray() first"
+      },
+      "setWithholdRatio(uint256)": {
+        "params": {
+          "newRatio": "of ETH that is sent to deposit contract vs withheld, 1e6 precision"
+        }
+      },
+      "submitAndDeposit(address)": {
+        "details": "Could try using EIP-712 / EIP-2612 here in the future if you replace this contract, but you might run into msg.sender vs tx.origin issues with the ERC4626 "
+      }
+    }
+  },
   "ast": {
     "absolutePath": "src/frxETHMinter.sol",
     "id": 30029,

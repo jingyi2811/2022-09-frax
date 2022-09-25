@@ -2120,6 +2120,22 @@
     },
     "version": 1
   },
+  "userdoc": {
+    "version": 1,
+    "kind": "user"
+  },
+  "devdoc": {
+    "version": 1,
+    "kind": "dev",
+    "methods": {
+      "testTotalAssetsDuringDelayedRewardDistribution(uint128,uint128)": {
+        "details": "Test totalAssets call before, during, and after a reward distribution that starts on cycle start"
+      },
+      "testTotalAssetsDuringRewardDistribution(uint128,uint128)": {
+        "details": "test totalAssets call before, during, and after a reward distribution that starts on cycle start"
+      }
+    }
+  },
   "ast": {
     "absolutePath": "test/frxETH_sfrxETH_combo.t.sol",
     "id": 36000,

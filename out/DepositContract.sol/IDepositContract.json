@@ -278,6 +278,51 @@
     },
     "version": 1
   },
+  "userdoc": {
+    "version": 1,
+    "kind": "user",
+    "methods": {
+      "deposit(bytes,bytes,bytes,bytes32)": {
+        "notice": "Submit a Phase 0 DepositData object."
+      },
+      "get_deposit_count()": {
+        "notice": "Query the current deposit count."
+      },
+      "get_deposit_root()": {
+        "notice": "Query the current deposit root hash."
+      }
+    },
+    "events": {
+      "DepositEvent(bytes,bytes,bytes,bytes,bytes)": {
+        "notice": "A processed deposit event."
+      }
+    },
+    "notice": "This is the Ethereum 2.0 deposit contract interface. For more information see the Phase 0 specification under https://github.com/ethereum/eth2.0-specs"
+  },
+  "devdoc": {
+    "version": 1,
+    "kind": "dev",
+    "methods": {
+      "deposit(bytes,bytes,bytes,bytes32)": {
+        "params": {
+          "deposit_data_root": "The SHA-256 hash of the SSZ-encoded DepositData object. Used as a protection against malformed input.",
+          "pubkey": "A BLS12-381 public key.",
+          "signature": "A BLS12-381 signature.",
+          "withdrawal_credentials": "Commitment to a public key for withdrawals."
+        }
+      },
+      "get_deposit_count()": {
+        "returns": {
+          "_0": "The deposit count encoded as a little endian 64-bit number."
+        }
+      },
+      "get_deposit_root()": {
+        "returns": {
+          "_0": "The deposit root hash."
+        }
+      }
+    }
+  },
   "ast": {
     "absolutePath": "src/DepositContract.sol",
     "id": 28242,

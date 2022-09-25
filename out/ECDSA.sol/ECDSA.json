@@ -78,6 +78,15 @@
     },
     "version": 1
   },
+  "userdoc": {
+    "version": 1,
+    "kind": "user"
+  },
+  "devdoc": {
+    "version": 1,
+    "kind": "dev",
+    "details": "Elliptic Curve Digital Signature Algorithm (ECDSA) operations. These functions can be used to verify that a message was signed by the holder of the private keys of a given address."
+  },
   "ast": {
     "absolutePath": "lib/openzeppelin-contracts/contracts/utils/cryptography/ECDSA.sol",
     "id": 23302,

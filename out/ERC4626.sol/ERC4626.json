@@ -1490,6 +1490,16 @@
     },
     "version": 1
   },
+  "userdoc": {
+    "version": 1,
+    "kind": "user",
+    "notice": "Minimal ERC4626 tokenized Vault implementation."
+  },
+  "devdoc": {
+    "version": 1,
+    "kind": "dev",
+    "author": "Solmate (https://github.com/transmissions11/solmate/blob/main/src/mixins/ERC4626.sol)"
+  },
   "ast": {
     "absolutePath": "lib/solmate/src/mixins/ERC4626.sol",
     "id": 26629,

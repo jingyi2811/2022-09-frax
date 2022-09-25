@@ -392,6 +392,14 @@
     },
     "version": 1
   },
+  "userdoc": {
+    "version": 1,
+    "kind": "user"
+  },
+  "devdoc": {
+    "version": 1,
+    "kind": "dev"
+  },
   "ast": {
     "absolutePath": "script/AddValidators.s.sol",
     "id": 27595,

@@ -1229,6 +1229,14 @@
     },
     "version": 1
   },
+  "userdoc": {
+    "version": 1,
+    "kind": "user"
+  },
+  "devdoc": {
+    "version": 1,
+    "kind": "dev"
+  },
   "ast": {
     "absolutePath": "test/init.t.sol",
     "id": 36109,

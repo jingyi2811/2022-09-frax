@@ -70,6 +70,15 @@
     },
     "version": 1
   },
+  "userdoc": {
+    "version": 1,
+    "kind": "user"
+  },
+  "devdoc": {
+    "version": 1,
+    "kind": "dev",
+    "details": "String operations."
+  },
   "ast": {
     "absolutePath": "lib/openzeppelin-contracts/contracts/utils/Strings.sol",
     "id": 22941,

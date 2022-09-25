@@ -62,6 +62,16 @@
     },
     "version": 1
   },
+  "userdoc": {
+    "version": 1,
+    "kind": "user",
+    "notice": "Safe unsigned integer casting library that reverts on overflow."
+  },
+  "devdoc": {
+    "version": 1,
+    "kind": "dev",
+    "author": "Solmate (https://github.com/transmissions11/solmate/blob/main/src/utils/SafeCastLib.sol)Modified from OpenZeppelin (https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/math/SafeCast.sol)"
+  },
   "ast": {
     "absolutePath": "lib/solmate/src/utils/SafeCastLib.sol",
     "id": 27426,

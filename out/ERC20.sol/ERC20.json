@@ -670,6 +670,17 @@
     },
     "version": 1
   },
+  "userdoc": {
+    "version": 1,
+    "kind": "user",
+    "notice": "Modern and gas efficient ERC20 + EIP-2612 implementation."
+  },
+  "devdoc": {
+    "version": 1,
+    "kind": "dev",
+    "author": "Solmate (https://github.com/transmissions11/solmate/blob/main/src/tokens/ERC20.sol)Modified from Uniswap (https://github.com/Uniswap/uniswap-v2-core/blob/master/contracts/UniswapV2ERC20.sol)",
+    "details": "Do not manually set balances without updating totalSupply, as the sum of all user balances must not exceed it."
+  },
   "ast": {
     "absolutePath": "lib/solmate/src/tokens/ERC20.sol",
     "id": 27017,

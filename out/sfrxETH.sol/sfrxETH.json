@@ -2102,6 +2102,56 @@
     },
     "version": 1
   },
+  "userdoc": {
+    "version": 1,
+    "kind": "user",
+    "methods": {
+      "depositWithSignature(uint256,address,uint256,bool,uint8,bytes32,bytes32)": {
+        "notice": "Approve and deposit() in one transaction"
+      },
+      "lastRewardAmount()": {
+        "notice": "the amount of rewards distributed in a the most recent cycle."
+      },
+      "lastSync()": {
+        "notice": "the effective start of the current cycle"
+      },
+      "mintWithSignature(uint256,address,uint256,bool,uint8,bytes32,bytes32)": {
+        "notice": "Approve and mint() in one transaction"
+      },
+      "pricePerShare()": {
+        "notice": "How much frxETH is 1E18 sfrxETH worth. Price is in ETH, not USD"
+      },
+      "rewardsCycleEnd()": {
+        "notice": "the end of the current cycle. Will always be evenly divisible by `rewardsCycleLength`."
+      },
+      "rewardsCycleLength()": {
+        "notice": "the maximum length of a rewards cycle"
+      },
+      "syncRewards()": {
+        "notice": "SFRXETH.SOL rewards to xERC4626 holders. All surplus `asset` balance of the contract over the internal balance becomes queued for the next cycle."
+      },
+      "totalAssets()": {
+        "notice": "Compute the amount of tokens available to share holders.         Increases linearly during a reward distribution period from the sync call, not the cycle start."
+      }
+    }
+  },
+  "devdoc": {
+    "version": 1,
+    "kind": "dev",
+    "details": "Exchange rate between frxETH and sfrxETH floats, you can convert your sfrxETH for more frxETH over time. Exchange rate increases as the frax msig mints new frxETH corresponding to the staking yield and drops it into the vault (sfrxETH contract). There is a short time period, “cycles” which the exchange rate increases linearly over. This is to prevent gaming the exchange rate (MEV). The cycles are constant length, but calling syncRewards slightly into a would-be cycle keeps the same would-be endpoint (so cycle ends are every X seconds). Someone must call syncRewards, which queues any new frxETH in the contract to be added to the redeemable amount. sfrxETH adheres to ERC-4626 vault specs  Mint vs Deposit mint() - deposit targeting a specific number of sfrxETH out deposit() - deposit knowing a specific number of frxETH in ",
+    "methods": {
+      "mintWithSignature(uint256,address,uint256,bool,uint8,bytes32,bytes32)": {
+        "details": "Similar to the deposit method, but you give it the number of shares you want instead."
+      }
+    },
+    "errors": {
+      "SyncError()": [
+        {
+          "details": "thrown when syncing before cycle ends."
+        }
+      ]
+    }
+  },
   "ast": {
     "absolutePath": "src/sfrxETH.sol",
     "id": 30201,

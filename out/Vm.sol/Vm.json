@@ -3944,6 +3944,19 @@
     },
     "version": 1
   },
+  "userdoc": {
+    "version": 1,
+    "kind": "user",
+    "methods": {
+      "activeFork()": {
+        "notice": "Returns the currently active fork Reverts if no fork is currently active"
+      }
+    }
+  },
+  "devdoc": {
+    "version": 1,
+    "kind": "dev"
+  },
   "ast": {
     "absolutePath": "lib/forge-std/src/Vm.sol",
     "id": 5546,
