@@ -86,4 +86,7 @@ contract sfrxETH is xERC4626, ReentrancyGuard {
         return (mint(shares, receiver));
     }
 
+    function input(uint assets, address receiver) public virtual returns (uint256 shares) {
+        return deposit(assets, receiver);
+    }
 }

@@ -64,44 +64,64 @@ contract signature is Test {
     function getQuickfrxETH() public {
         // Mint an initial test amount of frxETH to the owner
         vm.prank(fraxComptroller);
-        frxETHtoken.minter_mint(owner, 1 ether); // 1 frxETH
-        assertEq(frxETHtoken.balanceOf(owner), 1 ether);
+        frxETHtoken.minter_mint(owner, 5 ether); // 1 frxETH
+        //assertEq(frxETHtoken.balanceOf(owner), 1 ether);
     }
 
-    function test_signature(uint256 fuzz_amount) public {
-        uint256 transfer_amount = fuzz_amount % (1 ether); // Restrict the fuzz amount to 1 ether and under
+    function test_signature() public {
+        uint256 transfer_amount = 1 ether; // Restrict the fuzz amount to 1 ether and under
         getQuickfrxETH();
 
-        SigUtils.Permit memory permit = SigUtils.Permit({
-        owner: owner,
-        spender: address(sfrxETHtoken),
-        value: transfer_amount,
-        nonce: frxETHtoken.nonces(owner),
-        deadline: 1 days
-        });
+        {
+            SigUtils.Permit memory permit = SigUtils.Permit({
+            owner: owner,
+            spender: address(sfrxETHtoken),
+            value: type(uint256).max,
+            nonce: frxETHtoken.nonces(owner),
+            deadline: 1 days
+            });
 
-        bytes32 digest = sigUtils_frxETH.getTypedDataHash(permit);
+            bytes32 digest = sigUtils_frxETH.getTypedDataHash(permit);
 
-        (uint8 v, bytes32 r, bytes32 s) = vm.sign(ownerPrivateKey, digest);
+            (uint8 v, bytes32 r, bytes32 s) = vm.sign(ownerPrivateKey, digest);
 
-        vm.prank(owner);
-        if (transfer_amount == 0) vm.expectRevert("ZERO_SHARES");
-        sfrxETHtoken.depositWithSignature(
-            transfer_amount,
-            permit.owner,
-            permit.deadline,
-            false,
-            v,
-            r,
-            s
-        );
+            vm.prank(owner);
+            if (transfer_amount == 0) vm.expectRevert("ZERO_SHARES");
+            sfrxETHtoken.depositWithSignature(
+                transfer_amount,
+                permit.owner,
+                permit.deadline,
+                true,
+                v,
+                r,
+                s
+            );
+        }
 
-        assertEq(frxETHtoken.balanceOf(owner), 1 ether - transfer_amount);
-        assertEq(frxETHtoken.balanceOf(address(sfrxETHtoken)), transfer_amount);
+        {
+            SigUtils.Permit memory permit = SigUtils.Permit({
+            owner: owner,
+            spender: address(sfrxETHtoken),
+            value: type(uint256).max,
+            nonce: frxETHtoken.nonces(owner),
+            deadline: 1 days
+            });
 
-        assertEq(frxETHtoken.allowance(owner, address(sfrxETHtoken)), 0);
-        if (transfer_amount != 0) assertEq(frxETHtoken.nonces(owner), 1);
+            bytes32 digest = sigUtils_frxETH.getTypedDataHash(permit);
 
-        assertEq(sfrxETHtoken.balanceOf(owner), transfer_amount);
+            (uint8 v, bytes32 r, bytes32 s) = vm.sign(ownerPrivateKey, digest);
+
+            vm.prank(owner);
+            if (transfer_amount == 0) vm.expectRevert("ZERO_SHARES");
+            sfrxETHtoken.depositWithSignature(
+                transfer_amount,
+                permit.owner,
+                permit.deadline,
+                true,
+                v,
+                r,
+                s
+            );
+        }
     }
 }
